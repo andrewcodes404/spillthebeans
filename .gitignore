@@ -5,3 +5,8 @@ node_modules/
 haters/
 variables.env
 variables.env.now
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
