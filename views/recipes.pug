@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  
+  //- pre= h.dump(tags)
+  h2 Search by ingredient
+  .tags-cont
+    each tag in tags
+      a(href=`/recipes/${tag._id}` class=(tag._id === tag ? 'tag__link--active' : ''))
+        .tag= tag._id + " : " + tag.count
+    
+
+    
+  .card-cont
+    for doc in docs
+        .card
+          .card-img
+            a(href=`/recipe/${doc.slug}`)
+              img(src=`https://res.cloudinary.com/dcqi9fn2y/image/upload/c_fill,g_center,h_400,w_400/v${doc.version}/${doc.public_id}.${doc.format}`, alt='')
+                
+          .card-text
+            a(href=`/recipe/${doc.slug}/edit`)
+              p.bold.mb1.underline edit me
+            a(href=`recipe/${doc.slug}`)
+              h2= doc.title
+            if doc.blog_content
+              p!= doc.blog_content.replace(/<img[^>]*>/g,"").replace(/(<([^>]+)>)/ig,"").split(' ').slice(0, 38).join(' ')

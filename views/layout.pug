@@ -1,0 +1,97 @@
+doctype html
+html(lang='en')
+  head
+    title [ S.B.T ]
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width,initial-scale=1,shrink-to-fit=no')
+    meta(http-equiv='x-ua-compatible', content='ie=edge')
+    //build:css css/style.css 
+    link(rel='stylesheet', href='/dist/style.css')
+    // endbuild 
+    // google fonts 
+    link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Lato:300,400,700', rel='stylesheet')
+    // font awesome 
+    link(href='https://use.fontawesome.com/releases/v5.0.6/css/all.css', rel='stylesheet')
+    // quick favicon 
+    link(rel='shortcut icon', type='image/png', href='/images/icons/logo.png')
+    // SEO STUFF 
+    meta(name='twitter:card', content='summary_large_image')
+    meta(name='twitter:site', content='@twitter@username')
+    meta(name='twitter:title', content='A concise title for the related content')
+    meta(name='twitter:description', content='Concisely summarize the content, do not re-use the title as the description ')
+    meta(name='twitter:image', content='https://res.cloudinary.com/dcqi9fn2y/image/upload/v1500632976/andrewcodes404/android-chrome-512x512.png')
+    meta(property='og:title', content='article title')
+    meta(property='og:type', content='this defines the og --> article')
+    meta(property='og:image', content='image')
+    meta(property='og:url', content='url address')
+    meta(property='og:locale', content='en_GB')
+    meta(property='og:description', content='A one to two sentence description of your object')
+    meta(property='og:site_name', content='site name not url')
+  
+    
+  body
+    .container
+      header
+        nav
+          .logo
+            a(href='/')
+              h1 spill the beans
+          .menu-btn#menu-btn
+            span MENU
+          .menu#menu
+            .links
+              a(href='/') home
+              a(href='/about') about
+              a(href='/recipes') recipes
+              
+                
+              if user
+                a(href='/editor') editor
+                a(href='/account') account
+                a(href='/register') register
+                
+            .logins
+              
+              if user
+                a(href='/logout') logout 
+                  i.fas.fa-sign-out-alt
+              else
+                a(href='/login') login
+                  i.fas.fa-sign-in-alt
+    
+
+      
+      
+      block content
+        
+      block messages
+        if locals.flashes
+          - const categories = Object.keys(locals.flashes)
+          each category in categories
+            each message in flashes[category]
+              .flash(class=`flash--${category}`)
+                p.flash__text!= message
+                button.flash__remove(onClick="this.parentElement.remove()") &times;    
+    
+    
+    
+      .push-down
+      footer
+        a(href='#')
+          small SPILL THE BEANS
+        .social
+          a(href='#')
+            i.fab.fa-instagram
+          a(href='#')
+            i.fab.fa-twitter
+          a(href='#')
+            i.fab.fa-facebook
+          a(href='#')
+            i.fab.fa-github
+      //build:js js/main.min.js 
+      //- script(src='/js/app.js', type='text/javascript', charset='utf-8')
+      //- script(src='js/lib/another-library.js')
+      //- 
+    block scripts
+      script(src="/dist/App.bundle.js")

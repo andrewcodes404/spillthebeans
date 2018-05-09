@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  
+  - doc ? doc : doc = {}
+  script(src='/javascripts/tinymce/tinymce.min.js', charset='utf-8')
+  script(src='/javascripts/tiny-init.js', charset='utf-8')
+  
+  
+  form(action=`/editor/${doc.slug || ''}`  method='post' enctype='multipart/form-data')
+    
+    h1.underline.mb2 EDITOR
+  
+    label(for="title") Title
+    input#wide-input(type='text', name='title' value=doc.title)
+  
+    label(for="title") Hero Image
+    p This will show up on the home page and in other links
+    input(type="file" name="heroImg" accept="image/gif, image/png, image/jpeg")
+    br
+    if doc.hero_url
+      img.img-sml(src=`${doc.hero_url}`, alt='')
+    
+    .tiny-cont
+      label(for="blog_content").mb1 Blog Post
+      textarea#tiny_editor(name='blog_content', rows='8', cols='80')=doc.blog_content
+
+
+    label(for="tags") Tag me
+    p#wide-input Add two or three of the main ingredients in your recipe
+    small use a hyphen for split ingredients... puy-lentils, white-miso, black-truffle
+    
+    
+    input#wide-input(type='text', name='tags' value=stringy)
+    
+    
+
+    label(for="seo_desc") Descripton for twitter &amp; facebook
+    p#wide-input A one to two sentence description, Concisely summarize the content, do not re-use the title as the description
+    input#wide-input(type='text', name='seo_desc' value=doc.seo_desc)
+    br
+    input(type='submit', name='', value='SUBMIT ARTICLE')

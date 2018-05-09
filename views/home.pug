@@ -1,0 +1,33 @@
+extends layout
+
+block content
+
+  .hero-cont
+    .hero-img-cont
+      a(href=`recipe/${docs[0].slug}`)
+        
+        img(src=`https://res.cloudinary.com/dcqi9fn2y/image/upload/c_fill,g_center,h_450,w_650/v${docs[0].version}/${docs[0].public_id}.${docs[0].format}`, alt='')  
+    .hero-text-cont
+      h3 LATEST RECIPE
+      a(`recipe/${docs[0].slug}`)
+        h2=docs[0].title
+        
+      if docs[0].blog_content
+        p!= docs[0].blog_content.replace(/<img[^>]*>/g,"").replace(/(<([^>]+)>)/ig,"").split(' ').slice(0, 44).join(' ')
+      
+
+        
+  
+  - const three = [docs[1],docs[2],docs[3]]
+  .card-cont
+    each doc in three
+     .card
+        .card-img
+          a(href=`recipe/${doc.slug}`)
+            img(src=`https://res.cloudinary.com/dcqi9fn2y/image/upload/c_fill,g_center,h_400,w_400/v${doc.version}/${doc.public_id}.${doc.format}`, alt='') 
+        .card-text
+          h3 RECIPES
+          a(href=`recipe/${doc.slug}`)
+            h2= doc.title
+          if doc.blog_content
+            p!= doc.blog_content.replace(/<img[^>]*>/g,"").replace(/(<([^>]+)>)/ig,"").split(' ').slice(0, 38).join(' ')

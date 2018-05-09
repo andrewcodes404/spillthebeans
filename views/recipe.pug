@@ -1,0 +1,106 @@
+doctype html
+html(lang='en')
+  head
+    title [ S.B.T ]
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width,initial-scale=1,shrink-to-fit=no')
+    meta(http-equiv='x-ua-compatible', content='ie=edge')
+    //build:css css/style.css 
+    link(rel='stylesheet', href='/dist/style.css')
+    // endbuild 
+    // google fonts 
+    link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Lato:300,400,700', rel='stylesheet')
+    // font awesome 
+    link(href='https://use.fontawesome.com/releases/v5.0.6/css/all.css', rel='stylesheet')
+    // quick favicon 
+    link(rel='shortcut icon', type='image/png', href='/images/icons/logo.png')
+    // SEO STUFF 
+    meta(name='twitter:card', content='summary_large_image')
+    meta(name='twitter:site', content='@recipe_archive')
+    meta(name='twitter:title', content=`${recipeDoc.title}`)
+    meta(name='twitter:description', content=`${recipeDoc.seo_desc}`)
+    meta(name='twitter:image', content=`${recipeDoc.hero_url}`)
+      
+    meta(property='og:title', content=`${recipeDoc.title}`)
+    meta(property='og:type', content='article')
+    meta(property='og:image', content=`${recipeDoc.hero_url}`)
+    meta(property='og:url', content='https://recipeDoc_archive.com')
+    meta(property='og:locale', content='en_GB')
+    meta(property='og:description', content=`${recipeDoc.seo_desc}`)
+    meta(property='og:site_name', content='recipeDoc_archive')
+  
+    script(src="/javascripts/twitter-api.js")
+    
+  body
+    .container
+      header
+        nav
+          .logo
+            a(href='/')
+              h1 spill the beans
+          .menu-btn#menu-btn
+            span MENU
+          .menu#menu
+            .links
+              a(href='/') home
+              a(href='/about') about
+              a(href='/recipes') recipes
+              a(href='/editor') editor
+            .search
+              i.fas.fa-search
+
+      block content
+        
+        .recipe-cont
+          .recipe-img-cont
+            h2=recipeDoc.title
+            .tags-cont.mb2
+              each tag in recipeDoc.tags
+                .tag= tag
+            img(src=`${recipeDoc.hero_url}`, alt='')
+              
+          .recipe-text-cont
+        
+            h2=recipeDoc.title
+        
+            if recipeDoc.blog_content
+              .recipe_content!= recipeDoc.blog_content
+                  
+              block messages
+                if locals.flashes
+                  - const categories = Object.keys(locals.flashes)
+                  each category in categories
+                    each message in flashes[category]
+                      .flash(class=`flash--${category}`)
+                        p.flash__text!= message
+                        button.flash__remove(onClick="this.parentElement.remove()") &times;    
+                        
+                        
+        //- a.twitter-share-button(href=`https://twitter.com/intent/tweet?text=${recipeDoc.title}${recipeDoc.seo_desc}https%3A%2F%2Fwebsite.com%2F${path} @recipe_archive #food`)
+        //-   | Tweet me now
+          
+        //- a.twitter-share-button(href='https://twitter.com/share', data-size='large', data-text='custom share text', data-url='https://dev.twitter.com/web/tweet-button', data-hashtags='example,demo', data-via='twitterdev', data-related='twitterapi,twitter')
+        //-   | Tweet
+    
+      
+    
+      .push-down
+      footer
+        a(href='/')
+          small SPILL THE BEANS
+        .social
+          a(href='#')
+            i.fab.fa-instagram
+          a(href='#')
+            i.fab.fa-twitter
+          a(href='#')
+            i.fab.fa-facebook
+          a(href='#')
+            i.fab.fa-github
+      //build:js js/main.min.js 
+      //- script(src='/js/app.js', type='text/javascript', charset='utf-8')
+      //- script(src='js/lib/another-library.js')
+      //- 
+    block scripts
+      script(src="/dist/App.bundle.js")

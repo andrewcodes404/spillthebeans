@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  
+  .hero-cont
+    .hero-text-cont
+      h3 SPILL THE BEANS...
+      p.bold Mauris blandit aliquet + eget tincidunt. lacinia eget consectetur sed, convallis at tellus.
+      // word-count: 54 
+      p Donec sollicitudin molestie malesuada. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Proin eget tortor risus. .
+    .about-img-cont
+      img(src='http://annajones.co.uk/cms/wp-content/uploads/2018/02/Valentines_pasta-760x443.jpg', alt='')
+  // .hero-cont 
+  h2.mt3.underline Latest Recipes
+  - const three = [docs[0],docs[1],docs[2]]
+  .card-cont
+    each doc in three
+     .card
+        .card-img
+          a(href=`recipe/${doc.slug}`)
+            img(src=`https://res.cloudinary.com/dcqi9fn2y/image/upload/c_fill,g_center,h_400,w_400/v${doc.version}/${doc.public_id}.${doc.format}`, alt='') 
+        .card-text
+          h3 RECIPES
+          a(href=`recipe/${doc.slug}`)
+            h2= doc.title
+          if doc.blog_content
+            p!= doc.blog_content.replace(/<img[^>]*>/g,"").replace(/(<([^>]+)>)/ig,"").split(' ').slice(0, 38).join(' ')

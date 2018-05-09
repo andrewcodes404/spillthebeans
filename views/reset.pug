@@ -1,0 +1,12 @@
+extends layout
+
+block content
+
+    //if there is no action on a form, the it will redirect to itself
+    form.form(method="POST")
+      h2 Reset Your Password
+      label(for="password") Password
+      input(type="password" name="password")
+      label(for="password-confirm") Confirm Password
+      input(type="password" name="password-confirm")
+      input.text-btn(type="submit" value="Reset")

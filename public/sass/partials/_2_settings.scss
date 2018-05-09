@@ -1,0 +1,187 @@
+///////////////////////////////////
+///****   helper_classes.scss   ****///
+///////////////////////////////////
+///quick border
+.border1{ border: 1px dashed blue;}
+.border2{ border: 1px dashed orange;}
+.border3{ border: 1px dashed aqua;}
+
+/////quick hover
+.hover{
+    transform: scale(1);
+    transition: .15s;
+    &:hover{
+        color: orange;
+        transform: scale(1.15);
+        transform-origin: center;
+    }
+    cursor: pointer;
+    position: inherit;
+}
+
+////make that iframe fit
+.vid-box{
+    position: relative;
+    height: 0;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    margin: 1rem 0;
+}
+
+.vid-box iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+////**** lists ****/////
+ul{margin-bottom: 1rem;}
+
+li{
+  @include fontSize(16px);
+  line-height: 1.4;
+  font-weight: 300;
+  list-style: none;
+  list-style-position: inside;
+}
+li::before{
+  content: " - "
+}
+
+////**** quotes ****/////
+em{ font-style: italic;}
+em::before{content: '"';}
+em::after{content: '"';}
+
+////**** blockquote ****////
+blockquote{
+    margin:1rem 1rem;
+    padding-left: 1rem;
+    font-style: italic;
+    color: darkslategray;
+    border-left: 1px solid;
+    line-height: 1.5;
+}
+
+
+////**** text transform ****////
+.text-lowercase {text-transform: lowercase;}
+.text-uppercase {text-transform: uppercase;}
+.text-capitalize {text-transform: capitalize;}
+strong{font-weight: 600;}
+.bold {font-weight: 500;}
+.light{font-weight: 300;}
+.underline {text-decoration: underline;}
+.italic{font-style: italic;}
+.highlight {color: yellow; background-color: pink}
+.text-left{text-align: left;}
+.text-right{text-align: right;}
+.text-center{text-align: center;}
+///columns
+.columns{
+  column-count: 3;
+  column-width: 225px;
+}
+.columns2{columns: 2;}
+.columns3{columns: 3;}
+.columns4{columns: 4;}
+.columns5{columns: 5;}
+
+.column-gap1{column-gap: 1rem;}
+.column-gap2{column-gap: 2rem;}
+.column-gap3{column-gap: 3rem;}
+
+.column-rule{
+  column-rule: 1px solid grey;
+}
+
+//////////////////////////////////////////
+///****   padding_&_margins.scss   ****///
+//////////////////////////////////////////
+
+//Padding and margins
+$padding1  :  1rem;
+$padding2  :  2rem;
+$padding3  :  3rem;
+
+$margin1  :  1rem;
+$margin2  :  2rem;
+$margin3  :  3rem;
+
+//padding
+.p1px{padding: 1px;} ///use this to stop divs collapsing
+
+.p0{padding: 0;}
+.p05{padding: ($padding1 / 2);}
+.p1{padding: $padding1;}
+.p2{padding: $padding2;}
+.p3{padding: $padding3;}
+
+.pt05{padding-top: ($padding1 / 2);}
+.pt1{padding-top: $padding1;}
+.pt2{padding-top: $padding2;}
+.pt3{padding-top: $padding3;}
+
+.pb05{padding-bottom: ($padding1 / 2);}
+.pb1{padding-bottom: $padding1;}
+.pb2{padding-bottom: $padding2;}
+.pb3{padding-bottom: $padding3;}
+
+.pl05{padding-left: ($padding1 / 2);}
+.pl1{padding-left: $padding1;}
+.pl2{padding-left: $padding2;}
+.pl3{padding-left: $padding3;}
+
+.pr05{padding-right: ($padding1 / 2);}
+.pr1{padding-right: $padding1;}
+.pr2{padding-right: $padding2;}
+.pr3{padding-right: $padding3;}
+
+.pv05{padding: ($padding1 / 2) 0;}
+.pv1{padding: $padding1 0;}
+.pv2{padding: $padding2 0;}
+.pv3{padding: $padding3 0;}
+
+.ph05{padding: 0 ($padding1 / 2);}
+.ph1{padding: 0 $padding1;}
+.ph2{padding: 0 $padding2;}
+.ph3{padding: 0 $padding3;}
+
+//margins
+.m0{margin: 0;}
+.m05{margin: ($margin1 / 2);}
+.m1{padding: $margin1;}
+.m2{padding: $margin2;}
+.m3{padding: $margin3;}
+
+.mt05{margin-top: ($margin1 / 2);}
+.mt1{margin-top: $margin1;}
+.mt2{margin-top: $margin2;}
+.mt3{margin-top: $margin3;}
+
+.mb05{margin-bottom: ($margin1 / 2);}
+.mb1{margin-bottom: $margin1;}
+.mb2{margin-bottom: $margin2;}
+.mb3{margin-bottom: $margin3;}
+
+.ml05{margin-left: ($margin1 / 2);}
+.ml1{margin-left: $margin1;}
+.ml2{margin-left: $margin2;}
+.ml3{margin-left: $margin3;}
+
+.mr05{margin-right: ($margin1 / 2);}
+.mr1{margin-right: $margin1;}
+.mr2{margin-right: $margin2;}
+.mr3{margin-right: $margin3;}
+
+.mv05{margin: ($margin1 / 2) 0;}
+.mv1{margin: $margin1 0;}
+.mv2{margin: $margin2 0;}
+.mv3{margin: $margin3 0;}
+
+.mh05{margin: 0 ($margin1 / 2);}
+.mh1{margin: 0 $margin1;}
+.mh2{margin: 0 $margin2;}
+.mh3{margin: 0 $margin3;}

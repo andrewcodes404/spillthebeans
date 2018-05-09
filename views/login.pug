@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  
+  form.form-login(action='/login', method='post')
+    
+    h2 login
+    label(for='email') email
+    input(type='email', name='email')
+    br
+    label(for='password') password
+    input(type='password', name='password')
+    br
+    input(type='submit', name='', value='LOGIN')
+      
+      
+  form.from-forgot(action='/account/forgot', method='POST')
+    h2 I forgot my password!
+    label(for='email') email
+    input(type='email', name='email')
+    br
+    input(type='submit', name='', value='SEND ME AN EMAIL')
