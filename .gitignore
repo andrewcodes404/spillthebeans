@@ -5,6 +5,7 @@ node_modules/
 haters/
 variables.env
 variables.env.now
+package-json_bak
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
